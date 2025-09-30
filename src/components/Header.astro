@@ -1,0 +1,120 @@
+---
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 transition-all duration-300">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8" role="navigation" aria-label="Main navigation">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center space-x-2 group" aria-label="ChurchGate Home">
+          <div class="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+            <svg class="w-4 h-4 lg:w-5 lg:h-5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <span class="text-xl lg:text-2xl font-serif font-semibold text-deep-500 group-hover:text-gold-600 transition-colors duration-200">
+            ChurchGate
+          </span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          <a href="/" class="text-deep-500 hover:text-gold-600 px-3 py-2 text-sm font-medium transition-colors duration-200 border-b-2 border-transparent hover:border-gold-600">
+            Home
+          </a>
+          <a href="/vision" class="text-deep-500 hover:text-gold-600 px-3 py-2 text-sm font-medium transition-colors duration-200 border-b-2 border-transparent hover:border-gold-600">
+            Our Vision
+          </a>
+          <a href="/features" class="text-deep-500 hover:text-gold-600 px-3 py-2 text-sm font-medium transition-colors duration-200 border-b-2 border-transparent hover:border-gold-600">
+            Features
+          </a>
+          <a href="/support" class="text-deep-500 hover:text-gold-600 px-3 py-2 text-sm font-medium transition-colors duration-200 border-b-2 border-transparent hover:border-gold-600">
+            Support Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Donate Button & Mobile Menu Button -->
+      <div class="flex items-center space-x-4">
+        <a href="/donate" class="hidden sm:inline-flex items-center px-4 py-2 border-2 border-gold-500 text-gold-600 text-sm font-medium rounded-full hover:bg-gold-500 hover:text-white transition-all duration-200 hover:scale-105">
+          Donate
+        </a>
+        
+        <!-- Mobile menu button -->
+        <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-deep-500 hover:text-gold-600 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gold-500 transition-colors duration-200" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+          <span class="sr-only">Open main menu</span>
+          <!-- Menu icon -->
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" id="menu-open">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <!-- Close icon -->
+          <svg class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" id="menu-close">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-stone-200">
+        <a href="/" class="text-deep-500 hover:text-gold-600 block px-3 py-2 text-base font-medium transition-colors duration-200">
+          Home
+        </a>
+        <a href="/vision" class="text-deep-500 hover:text-gold-600 block px-3 py-2 text-base font-medium transition-colors duration-200">
+          Our Vision
+        </a>
+        <a href="/features" class="text-deep-500 hover:text-gold-600 block px-3 py-2 text-base font-medium transition-colors duration-200">
+          Features
+        </a>
+        <a href="/support" class="text-deep-500 hover:text-gold-600 block px-3 py-2 text-base font-medium transition-colors duration-200">
+          Support Us
+        </a>
+        <a href="/donate" class="text-gold-600 hover:text-gold-700 block px-3 py-2 text-base font-medium border-t border-stone-200 mt-2 pt-3 transition-colors duration-200">
+          Donate
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpenIcon = document.getElementById('menu-open');
+    const menuCloseIcon = document.getElementById('menu-close');
+    
+    if (mobileMenuButton && mobileMenu && menuOpenIcon && menuCloseIcon) {
+      mobileMenuButton.addEventListener('click', () => {
+        const isMenuOpen = !mobileMenu.classList.contains('hidden');
+        
+        if (isMenuOpen) {
+          mobileMenu.classList.add('hidden');
+          menuOpenIcon.classList.remove('hidden');
+          menuCloseIcon.classList.add('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          menuOpenIcon.classList.add('hidden');
+          menuCloseIcon.classList.remove('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // Close mobile menu when clicking on a link
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuOpenIcon.classList.remove('hidden');
+          menuCloseIcon.classList.add('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+</script>

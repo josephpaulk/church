@@ -1,0 +1,112 @@
+---
+const features = [
+  {
+    icon: "connect",
+    title: "Connect",
+    description: "Find and connect with brothers and sisters from around the world, building meaningful relationships that transcend geography."
+  },
+  {
+    icon: "share",
+    title: "Share",
+    description: "Share your testimony, prayer requests, and join group discussions that strengthen our collective faith journey."
+  },
+  {
+    icon: "discover",
+    title: "Discover",
+    description: "Explore a comprehensive directory of churches, ministries, and resources that serve the global body of Christ."
+  },
+  {
+    icon: "support",
+    title: "Support",
+    description: "Uplift the community through prayer, encouragement, and giving, embodying Christ's love in action."
+  }
+];
+---
+
+<section id="features" class="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%236B7A47" fill-opacity="0.02"%3E%3Cpath d="M20 20c0 11.046-8.954 20-20 20s-20-8.954-20-20 8.954-20 20-20 20 8.954 20 20zm0-40c0 11.046-8.954 20-20 20s-20-8.954-20-20 8.954-20 20-20 20 8.954 20 20z"/%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+
+  <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16 fade-in-on-scroll">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-deep-500 mb-4">
+        What You'll Find Inside
+      </h2>
+      <p class="text-lg sm:text-xl text-deep-400 max-w-3xl mx-auto leading-relaxed">
+        Step through the gate and discover a thriving community where faith comes alive through connection, sharing, and mutual support.
+      </p>
+      
+      <!-- Decorative Line -->
+      <div class="flex items-center justify-center mt-6">
+        <div class="w-16 h-px bg-gold-400"></div>
+        <div class="w-3 h-3 bg-gold-400 rounded-full mx-4"></div>
+        <div class="w-16 h-px bg-gold-400"></div>
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+      {features.map((feature, index) => (
+        <div 
+          class="group bg-gradient-to-br from-stone-50 to-sage-50 rounded-2xl p-6 sm:p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 border border-stone-200 hover:border-gold-300 fade-in-on-scroll"
+          style={`animation-delay: ${index * 0.1}s`}
+        >
+          <!-- Icon -->
+          <div class="mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+              {feature.icon === "connect" && (
+                <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+                </svg>
+              )}
+              {feature.icon === "share" && (
+                <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                </svg>
+              )}
+              {feature.icon === "discover" && (
+                <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                </svg>
+              )}
+              {feature.icon === "support" && (
+                <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                </svg>
+              )}
+            </div>
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-xl sm:text-2xl font-serif font-semibold text-deep-500 mb-3 group-hover:text-gold-600 transition-colors duration-300">
+            {feature.title}
+          </h3>
+          <p class="text-deep-400 leading-relaxed text-sm sm:text-base">
+            {feature.description}
+          </p>
+
+          <!-- Hover Accent -->
+          <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="w-8 h-0.5 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-16 fade-in-on-scroll">
+      <a 
+        href="https://hub.churchgate.org" 
+        class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-olive-500 to-sage-600 rounded-full hover:from-olive-600 hover:to-sage-700 hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl focus:ring-4 focus:ring-olive-300"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Join Our Community
+        <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

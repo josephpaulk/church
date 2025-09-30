@@ -1,0 +1,167 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  canonicalURL?: string;
+  ogImage?: string;
+}
+
+const { 
+  title, 
+  description = "ChurchGate.org - Connecting the global family of Christ. One Lord. One Faith. One Family.",
+  canonicalURL = Astro.url.href,
+  ogImage = "/og-image.jpg"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#8B7355" />
+    <meta name="author" content="Maxsys International Inc." />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ChurchGate.org",
+        "url": "https://churchgate.org",
+        "logo": "https://churchgate.org/logo.png",
+        "description": "A Christian unity platform where all believers are one family in Christ",
+        "foundingOrganization": {
+          "@type": "Organization",
+          "name": "Maxsys International Inc.",
+          "legalName": "Maxsys International Inc.",
+          "taxID": "501(c)(3)",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressRegion": "CA"
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-stone-50 text-deep-500 font-sans leading-relaxed overflow-x-hidden">
+    <slot />
+    
+    <!-- Smooth Scroll Script -->
+    <script>
+      // Enhanced smooth scrolling for anchor links
+      document.addEventListener('DOMContentLoaded', () => {
+        const scrollLinks = document.querySelectorAll('a[href^="#"]');
+        
+        scrollLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href')?.substring(1);
+            const targetElement = document.getElementById(targetId || '');
+            
+            if (targetElement) {
+              const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+              const targetPosition = targetElement.offsetTop - headerHeight - 20;
+              
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-fade-in-up');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-on-scroll.animate-fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #8B7355;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7A6347;
+  }
+</style>
